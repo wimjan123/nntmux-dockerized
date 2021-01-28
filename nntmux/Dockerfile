@@ -53,7 +53,7 @@ RUN sed -ri 's/(max_execution_time =) ([0-9]+)/\1 120/' /etc/php/7.4/apache2/php
   service apache2 restart
 
 RUN apt install -y \
-    unrar p7zip-full mediainfo lame ffmpeg libav-tools
+    unrar p7zip-full mediainfo lame ffmpeg
 
 RUN newgrp www-data && \
     cd /var/www/ && \
