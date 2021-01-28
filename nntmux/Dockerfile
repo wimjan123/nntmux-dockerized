@@ -39,7 +39,7 @@ RUN sed -i -e 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.co
 
 
 RUN useradd --create-home --shell /bin/bash nntmux && \
-    adduser nntmux sudo
+    adduser nntmux sudo && \
     usermod -a -G www-data nntmux
 
 RUN sed -ri 's/(max_execution_time =) ([0-9]+)/\1 120/' /etc/php/7.4/apache2/php.ini && \
