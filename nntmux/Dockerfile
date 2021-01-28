@@ -31,7 +31,7 @@ RUN apt install -y \
 
 COPY NNTmux.conf /etc/apache2/sites-available/NNTmux.conf
 
-RUN sed -i -e 's/AllowOverride None/AllowOverride All/g'/etc/apache2/apache2.conf && \
+RUN sed -i 's/AllowOverride None/AllowOverride All/g'/etc/apache2/apache2.conf && \
     a2dissite 000-default && \
     a2ensite NNTmux.conf && \
     a2enmod rewrite && \
