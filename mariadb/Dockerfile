@@ -1,6 +1,26 @@
 FROM mariadb:10.2
 MAINTAINER thewillonline
 
-RUN sed -i -r 's/bind-address.*$/bind-address = 0.0.0.0/' /etc/mysql/my.cnf \
-  && sed -i -r 's/port.*$/port = 3306'/ /etc/mysql/my.cnf \
-  && sed
+ADD my.cnf /etc/mysql/my.cnf
+
+ENV TERM dumb
+
+RUN apt-get update \
+  && apt-get install -y wget \
+  && rm -rf /var/lib/apt/lists/*
+
+
+
+#MySQLTuner
+ENV MYSQL_TUNER_VERSION 1.7.17
+RUN wget -O /mysqltuner.tar.gz https://github.com/major/MySQLTuner-perl/archive/${MYSQL_TUNER_VERSION}.tar.gz \
+  && cd / \
+  && tar xzvf mysqltuner.tar.gz \
+  && mv MySQLTuner-perl-${MYSQL_TUNER_VERSION} mysqltuner \
+  && rm /mysqltuner.tar.gz \
+  && chmod +x /mysqltuner/mysqltuner.pl
+
+
+COPY moduser-entrypoint.sh /usr/local/bin
+ENTRYPOINT ["moduser-entrypoint.sh"]
+CMD ["mysqld"]
