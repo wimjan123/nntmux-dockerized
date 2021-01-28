@@ -18,7 +18,8 @@ RUN wget -O /mysqltuner.tar.gz https://github.com/major/MySQLTuner-perl/archive/
   && rm /mysqltuner.tar.gz \
   && chmod +x /mysqltuner/mysqltuner.pl
 
+RUN mkdir /entryp/
 
-COPY moduser-entrypoint.sh /usr/local/bin
-ENTRYPOINT ["moduser-entrypoint.sh"]
+COPY moduser-entrypoint.sh /entryp/moduser-entrypoint.sh
+ENTRYPOINT ["/entryp/moduser-entrypoint.sh"]
 CMD ["mysqld"]
