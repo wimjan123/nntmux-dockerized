@@ -89,3 +89,14 @@ RUN cd /var/www/NNTmux && \
     chmod -R 777 /var/www/NNTmux/resources/ && \
     chmod -R 777 /var/www/NNTmux/public/ && \
     php artisan nntmux:install -n
+
+
+RUN git clone https://github.com/tmux/tmux.git && \
+    cd tmux && \
+    git fetch --all --tags --prune && \
+    git checkout 2.9 && \
+    sh autogen.sh && \
+    ./configure && make && \
+    make install && \
+    cd .. && \
+    rm -rf tmux
