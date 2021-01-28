@@ -13,7 +13,7 @@ RUN echo $TZ > /etc/timezone && \
 RUN apt-get update -y && \
     apt upgrade -y && \
     apt install -y \
-    nano sed
+    nano sed sudo
 
 RUN apt install -y \
     software-properties-common \
@@ -37,7 +37,10 @@ RUN sed -i -e 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.co
     a2enmod rewrite && \
     service apache2 restart
 
-RUN usermod -a -G www-data nntmux
+
+RUN useradd --create-home --shell /bin/bash nntmux && \
+    adduser nntmux sudo
+    usermod -a -G www-data nntmux
 
 RUN sed -ri 's/(max_execution_time =) ([0-9]+)/\1 120/' /etc/php/7.4/apache2/php.ini && \
   sed -ri "s/(memory_limit =) (.*$)/\1 -1/" /etc/php/7.4/apache2/php.ini && \
