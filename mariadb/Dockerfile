@@ -9,8 +9,6 @@ RUN apt-get update \
   && apt-get install -y wget \
   && rm -rf /var/lib/apt/lists/*
 
-
-
 #MySQLTuner
 ENV MYSQL_TUNER_VERSION 1.7.17
 RUN wget -O /mysqltuner.tar.gz https://github.com/major/MySQLTuner-perl/archive/${MYSQL_TUNER_VERSION}.tar.gz \
