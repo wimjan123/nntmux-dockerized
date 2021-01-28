@@ -74,6 +74,8 @@ RUN cd /var/www/ && \
     git fetch --all --tags --prune && \
     git checkout master
 
+COPY .env /var/www/NNTmux/.env
+
 RUN cd /var/www/NNTmux && \
     composer install
 
