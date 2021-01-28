@@ -16,7 +16,7 @@ RUN apt-get update -y && \
     nano sed
 
 RUN apt install -y \
-    software-properties-common python-software-properties \
+    software-properties-common \
     git make
 
 RUN add-apt-repository -y ppa:ondrej/php && \
