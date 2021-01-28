@@ -4,14 +4,14 @@ MAINTAINER thewillonline
 # Configure Timezone
 ENV TZ 'Europe/Amsterdam'
 RUN echo $TZ > /etc/timezone && \
-    apt-get update && apt-get install -y tzdata && \
+    apt-get update -y && apt-get install -y tzdata && \
     rm /etc/localtime && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata && \
     apt-get clean
 
 RUN apt-get update -y && \
-    apt upgrade && \
+    apt upgrade -y && \
     apt install -y \
     nano sed
 
