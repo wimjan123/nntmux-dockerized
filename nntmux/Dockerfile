@@ -90,6 +90,7 @@ RUN cd /var/www/NNTmux && \
     chmod -R 777 /var/www/NNTmux/public/ && \
     php artisan config:clear && \
     php artisan cache:clear && \
+    php artisan config:cache && \
     php artisan nntmux:install -n
 
 RUN apt install -y \
