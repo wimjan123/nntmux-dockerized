@@ -100,3 +100,5 @@ RUN git clone https://github.com/tmux/tmux.git && \
     make install && \
     cd .. && \
     rm -rf tmux
+
+CMD service apache2 start
