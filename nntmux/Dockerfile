@@ -104,6 +104,9 @@ RUN git clone https://github.com/tmux/tmux.git && \
     cd .. && \
     rm -rf tmux
 
+
+RUN service apache2 start
+
 ADD run.sh /tmp/run.sh
 RUN chmod +x /tmp/run.sh
 ENTRYPOINT ["/tmp/run.sh"]
