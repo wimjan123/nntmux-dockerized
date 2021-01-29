@@ -21,6 +21,7 @@ services:
     restart: unless-stopped
     ports:
       - 8800:80
+      - 8888:8000
     volumes:
       - $PWD/data/covers:/var/www/NNTmux/resources/covers/
       - $PWD/data/nzb:/var/www/NNTmux/resources/nzb/

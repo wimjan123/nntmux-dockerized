@@ -107,6 +107,8 @@ RUN git clone https://github.com/tmux/tmux.git && \
     cd .. && \
     rm -rf tmux
 
+RUN hostname nntmux
+
 
 RUN service apache2 start
 
