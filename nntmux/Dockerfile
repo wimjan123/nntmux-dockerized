@@ -90,6 +90,9 @@ RUN cd /var/www/NNTmux && \
     chmod -R 777 /var/www/NNTmux/public/ && \
     php artisan nntmux:install -n
 
+RUN apt install -y \
+    libevent-dev libncurses-dev pkg-config
+
 
 RUN git clone https://github.com/tmux/tmux.git && \
     cd tmux && \
